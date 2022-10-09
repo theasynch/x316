@@ -14,7 +14,7 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @discord.slash_command(name = 'help', description = "Stop it, get some help:')")
+    @discord.slash_command(name = 'help', description = "🫂 Stop it, get some help:')")
     async def help(self, ctx):
         user = ctx.author
         embed = discord.Embed(
@@ -24,7 +24,7 @@ class Help(commands.Cog):
         await ctx.respond(embed = embed)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    @discord.slash_command(name='about', description='About the developer!')
+    @discord.slash_command(name='about', description='💡 About the developer!')
     async def about(self, ctx):
         embed = discord.Embed(
             title='theasynch#4400',

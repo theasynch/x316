@@ -59,6 +59,11 @@ class Fun(commands.Cog):
                 emojis.append(s)
 
         await ctx.respond(' '.join(emojis))
+        
+    @discord.slash_command(name='say',  description='great people say great things')
+    async def say(self, ctx, *, quote):
+        user = ctx.author.display_name
+        await ctx.respond(f'**{quote}**\n\t -{user}')
     
 
 def setup(bot):

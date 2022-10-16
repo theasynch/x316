@@ -21,7 +21,7 @@ class Help(commands.Cog):
     async def about(self, ctx):
         embed = discord.Embed(
             title='About the Developer...',
-            description='Hey there! I am [theasynch](https://discord.com/users/692295384868978710). I really like to socialize and learn new skills! You can reach out to me via the below links'
+            description='Hey there! I am [theasynch](https://discord.com/users/692295384868978710). I really like to socialize and learn new skills! \nYou can reach out to me via the below links'
         )
         embed.add_field(
             name='🔗__Social Handles__',
@@ -31,7 +31,7 @@ class Help(commands.Cog):
             name='__Servers__',
             value='[`The Dank Camp`](https://discord.com/invite/6Eru3ebqah)\n[`8 - Bit Arcade`](https://discord.gg/SrVTQsFaWX)'
         )
-        embed.set_thumbnail(url='https://cdn.discordapp.com/avatars/692295384868978710/4f3725e0d53a5ced8f153ce38aa50ca6.webp')
+        embed.set_author(name = 'theasynch#4400',icon_url='https://cdn.discordapp.com/avatars/692295384868978710/4f3725e0d53a5ced8f153ce38aa50ca6.webp')
         await ctx.respond(embed=embed)
 
 

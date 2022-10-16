@@ -131,7 +131,7 @@ class Fun(commands.Cog):
                 res = res + test_str[idx].lower()
         await ctx.respond(res)
 
-    @commands.slash_command(name = 'hack', description = '💽 your info is now mine :)')
+    @discord.slash_command(name = 'hack', description = '💽 your info is now mine :)')
     async def hack(self, ctx, member: Option(discord.Member, description = 'Choose someone to heck.')):
 
         user = ctx.author.display_name

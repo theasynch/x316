@@ -88,7 +88,7 @@ class Fun(commands.Cog):
         await ctx.respond(text)
     
     @discord.slash_command(name = 'kill', description = '🔪 more like e-kill.')
-    async def kill(self, ctx, member: discord.Member = None):
+    async def kill(self, ctx, member: Option(discord.Member)):
         user = ctx.author
         n = member.display_name
         kill = [f"{n} went on a ride with a lead balloon and eventually fell in the valley.",
@@ -141,7 +141,7 @@ class Fun(commands.Cog):
         rand = random.choice(email)
         ips = ["179.156.92.62", "222.28.40.75","179.178.3.75","43.211.138.85","143.194.250.58","85.218.229.27","186.156.166.202","38.154.43.115","35.255.211.6","93.207.1.121","172.211.91.242","6.234.184.21","180.58.149.178","136.37.111.144","16.223.41.163","158.9.12.216","223.42.58.12","230.99.0.222","198.3.172.240"]
 
-        ctx.respond('<x316.cmd.exe object at 0x000001B24CD93FD0>')
+        await ctx.respond('<x316.cmd. exe object at 0x000001B24CD93FD0>')
         message = await ctx.send("Okay, setting up variable `IP Adress`")
         await asyncio.sleep(2)
         await message.edit(content="[▘]Okay, setting up variable `IP Adress`")

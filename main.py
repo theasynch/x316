@@ -1,6 +1,6 @@
 
 """
-Kōyō - Utilities and Fun!
+X316 - Utilities and Fun!
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Just a rather very fun and utile bot for your server!
@@ -11,16 +11,18 @@ Made with <3 by theasynch#4400
 
 
 import discord
+import pypresence
 import os
 from discord.ext import tasks
 from itertools import cycle
 
 client = discord.Bot()
-status = cycle(['the gears turn', 'for: w?help  ', 'the invite button', 'for: w?help', 'Interstellar',
-                 'for: w?help', 'the cogs turn', 'for: w?help', 'the stars ✨', 'for: w?help', 'you watching this :P', 'for: w?help'])
+status = cycle(['the gears turn', 'the playlist', 'the invite button', 'the kids play', 'Interstellar',
+                 'Breaking Bad', 'KIC 9832227', 'the stars ✨', 'you watching this :P',])
 
 @client.event
 async def on_ready():
+    print(client)
     print(f"{client.user} is ready and online!")
     change_status.start()
 
@@ -29,7 +31,7 @@ async def change_status():
     await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=next(status)))
 
 
-@client.command(name = 'ping', description = '📍 pong?')
+@client.command(name='ping', description='📍 pong?')
 async def ping(ctx):
     await ctx.respond('Pong! {0}'.format(round(client.latency, 1)))
 
@@ -38,4 +40,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('BOT TOKEN')
+client.run('MTAyMjgyNjgyMjE3NTU2Nzk3Mg.G2njuS.QKydTT__RWaFOKEBqF6mM3OL1HXnXwe2c2yqeA')

@@ -56,7 +56,7 @@ class Utility(commands.Cog):
         total = si + amt
         embed = discord.Embed(
             title="Simple Interest Calculator",
-            description=f"> The principle amount was: `{amt}`\n> The rate of interest was: `{rate}`\n> The time period was: `{time}`\nThe simple interest will be: {si}\n Similarly the total amount with interest will be: {total}",
+            description=f"```yaml\n Principle Amount : {amt}\n Rate of Interest : {rate}\n Tenure : {time} years\n Simple Interest : {si}\n Total Amount : {total}\n```",
             color=0x00ff00
         )
         await ctx.respond(embed=embed)
@@ -65,10 +65,12 @@ class Utility(commands.Cog):
     async def ci(self, ctx, amt: int, time: int, rate: int):
         Amount = amt * (pow((1 + rate / 100), time))
         CI = Amount - amt
+        CI = round(CI, 3)
+        Amount = round(Amount, 3)
 
         embed = discord.Embed(
             title="Compound Interest Calculator",
-            description=f"> The principle amount was: `{amt}`\n> The rate of interest was: `{rate}`\n> The time period was: `{time}`\nThe compound interest will be: `{CI}`\n Similarly the total amount with interest will be: `{Amount}`",
+            description=f"```yaml\n Principle Amount : {amt}\n Rate of Interest : {rate}\n Tenure : {time} years\n Compound Interest : {CI}\n Total Amount : {Amount}\n```",
             color=0x00ff00,
         )
         await ctx.respond(embed=embed)

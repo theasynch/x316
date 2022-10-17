@@ -57,7 +57,6 @@ class Utility(commands.Cog):
         embed = discord.Embed(
             title="Simple Interest Calculator",
             description=f"```yaml\n Principle Amount : {amt}\n Rate of Interest : {rate}\n Tenure : {time} years\n Simple Interest : {si}\n Total Amount : {total}\n```",
-            color=0x00ff00
         )
         await ctx.respond(embed=embed)
     
@@ -71,7 +70,7 @@ class Utility(commands.Cog):
         embed = discord.Embed(
             title="Compound Interest Calculator",
             description=f"```yaml\n Principle Amount : {amt}\n Rate of Interest : {rate}\n Tenure : {time} years\n Compound Interest : {CI}\n Total Amount : {Amount}\n```",
-            color=0x00ff00,
+        
         )
         await ctx.respond(embed=embed)
 
@@ -80,15 +79,22 @@ class Utility(commands.Cog):
         try:
             if num == None:
                 roll = random.randrange(1, 6)
-                await ctx.respond(f"Koyo rolls a die, and it lands a **{roll}**")
+                await ctx.respond(f"X316 rolls a die, and it lands a **{roll}**")
             else:
                 roll = random.randrange(1, num)
-                await ctx.respond(f"Koyo rolls **{roll}**!")
+                await ctx.respond(f"X316 rolls **{roll}**!")
 
         except:
             await ctx.respond("Error, check if the number is an integer or not!")
 
     
+    @discord.slash_command(name = 'wordcount', description = '🔠 count the number of words in an input.')
+    async def wordcount(self, ctx, input: discord.Option(str, description = 'Text to be counted')):
+        input_words = len(input.split())
+        embed = discord.Embed(title = 'WordCounter.exe',description = f'```yaml\nWord Count : {input_words}\n```')
+        embed.set_footer(text = '💡 Click on your command to see the input')
+
+        await ctx.respond(embed=embed)
 
 
 def setup(bot):

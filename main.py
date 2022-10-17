@@ -11,24 +11,26 @@ Made with <3 by theasynch#4400
 
 
 import discord
-import pypresence
+from pypresence import Presence
 import os
 from discord.ext import tasks
 from itertools import cycle
 
 client = discord.Bot()
-status = cycle(['the gears turn', 'the playlist', 'the invite button', 'the kids play', 'Interstellar',
+status = cycle(['the gears turn','the invite button', 'the kids play', 'Interstellar',
                  'Breaking Bad', 'KIC 9832227', 'the stars ✨', 'you watching this :P',])
+
 
 @client.event
 async def on_ready():
+
     print(client)
     print(f"{client.user} is ready and online!")
     change_status.start()
 
 @tasks.loop(seconds=6)
 async def change_status():
-    await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=next(status)))
+    await client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name=next(status)))
 
 
 @client.command(name='ping', description='📍 pong?')

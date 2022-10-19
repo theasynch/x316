@@ -20,15 +20,17 @@ class Utility(commands.Cog):
     async def ss(self, ctx, link):
         embed = discord.Embed(title="Website Screenshot for: {}".format(link))
         embed.set_image(
-            url=f"https://image.thum.io/get/width/1920/crop/675/maxAge/1/noanimate/{link}")
-
+            url=f"https://image.thum.io/get/{link}")
+        embed.set_footer(text = '💡 Click on your command to review the input.')
         await ctx.respond(embed=embed)
 
     @discord.slash_command(name = 'toss', description = '🪙 Quickly toss a coin, no cheating')
     async def toss(self, ctx):
         sides = ["+heads", "-tails"]
         side = random.choice(sides)
-        await ctx.respond(f"```diff\n{side}\n```")
+        embed = discord.Embed(title = "You tossed a coin...")
+        embed.add_field(name="...and it lands a...", value=f"```diff\n{side}\n```")
+        await ctx.respond(embed=embed)
 
     @discord.slash_command(name = 'timer', description = '⏱️ tick tick tick....')
     async def timer(self, ctx, hour:int, min:int, sec:int, note = None):
@@ -58,6 +60,7 @@ class Utility(commands.Cog):
             title="Simple Interest Calculator",
             description=f"```yaml\n Principle Amount : {amt}\n Rate of Interest : {rate}\n Tenure : {time} years\n Simple Interest : {si}\n Total Amount : {total}\n```",
         )
+        embed.set_footer(text = "💡 Click on your command to review the input")
         await ctx.respond(embed=embed)
     
     @discord.slash_command(name='compound_interest', description='🧮 Calculate the compound interest!')
@@ -72,6 +75,7 @@ class Utility(commands.Cog):
             description=f"```yaml\n Principle Amount : {amt}\n Rate of Interest : {rate}\n Tenure : {time} years\n Compound Interest : {CI}\n Total Amount : {Amount}\n```",
         
         )
+        embed.set_footer(text="💡 Click on your command to review the input")
         await ctx.respond(embed=embed)
 
     @discord.slash_command(name='roll', description = '🎲 Roll a dice with unlimited faces. 6 if None')
@@ -96,6 +100,14 @@ class Utility(commands.Cog):
 
         await ctx.respond(embed=embed)
 
+    @discord.slash_command(name = 'truncate', description = '🤏 make something shorter, just like your-')
+    async def truncate(self, ctx, input: discord.Option(str)):
+        split = [input[i:i+1999]for i in range(0, len(input),1999)]
+        try:
+            for s in split:
+                await ctx.respond(s)
+        except Exception as e:
+            await ctx.respond(e)
 
 def setup(bot):
     bot.add_cog(Utility(bot))

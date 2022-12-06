@@ -17,7 +17,7 @@ class Fun(commands.Cog):
         self.bot = bot
 
     @discord.slash_command(name = 'reverse', description = '🔁 esrever')
-    async def reverse(self, ctx, *, text):
+    async def reverse(self, ctx, text:discord.Option(str)):
         text = text[::-1]
         await ctx.respond(text)
 

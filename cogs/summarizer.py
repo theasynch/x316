@@ -54,9 +54,10 @@ class Summarizer(commands.Cog):
         percent_len = round(summary_len/total_len*100, 2)
 
         embed = discord.Embed(title = 'summarizer.exe', description = f'```yaml\n{summary}\n```')
-        embed.set_footer(text = '💡 Click on your command to see the input text!')
+        embed.set_footer(text='💡 Click on your command to see the input text!')
         await ctx.send(f'Your text is now about {percent_len}% shorter ✔️')
-        await ctx.respond(embed = embed)
+        await ctx.respond(embed=embed)
+        print(summary)
 
 
 def setup(bot):

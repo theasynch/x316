@@ -79,7 +79,7 @@ class Utility(commands.Cog):
         await ctx.respond(embed=embed)
 
     @discord.slash_command(name='roll', description = '🎲 Roll a dice with unlimited faces. 6 if None')
-    async def roll(self, ctx, num: int = None):
+    async def roll(self, ctx, num:discord.Option(int)):
         try:
             if num == None:
                 roll = random.randrange(1, 6)
@@ -100,14 +100,6 @@ class Utility(commands.Cog):
 
         await ctx.respond(embed=embed)
 
-    @discord.slash_command(name = 'truncate', description = '🤏 make something shorter, just like your-')
-    async def truncate(self, ctx, input: discord.Option(str)):
-        split = [input[i:i+1999]for i in range(0, len(input),1999)]
-        try:
-            for s in split:
-                await ctx.respond(s)
-        except Exception as e:
-            await ctx.respond(e)
 
 def setup(bot):
     bot.add_cog(Utility(bot))

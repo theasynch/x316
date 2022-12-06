@@ -11,7 +11,6 @@ Made with <3 by theasynch#4400
 
 
 import discord
-from pypresence import Presence
 import os
 from discord.ext import tasks
 from itertools import cycle
@@ -42,4 +41,6 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('MTAyMjgyNjgyMjE3NTU2Nzk3Mg.G2njuS.QKydTT__RWaFOKEBqF6mM3OL1HXnXwe2c2yqeA')
+
+
+client.run('ODY5OTcwMzA2MjU5ODkwMTk2.GxZNLl.64FoNGrI31wKV0mnU9b44X_7qNhwjko5-8NgLg')
